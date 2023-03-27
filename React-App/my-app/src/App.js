@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Button from './components/buttons/Button';
 import HelloWorld from './components/HelloWorld/HelloWorld';
@@ -10,10 +9,10 @@ function App() {
         Hello Sameer
       </div>
       <div>
-        <Button />
+        <Button name="First Button from App.js" />
       </div>
       <div>
-        <HelloWorld />
+        <HelloWorld text ='Hello world text from App.js' />
       </div>
     </div>
   );

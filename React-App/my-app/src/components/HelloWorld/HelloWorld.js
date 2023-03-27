@@ -5,7 +5,7 @@ class HelloWorld extends Component {
     render(){
         return (
             <div>
-                Hello Word
+                {this.props.text}
             </div>
         )
     }

@@ -1,9 +1,18 @@
-function Button(){
+// function Button(props){
+//     return (
+//         <div>
+//             <button>{props.name}</button>
+//         </div> 
+//     )
+// }
+
+const Button1 = ({name})=>{
+    name = "test"; // llocal variable can be changed but props cannot be changed
     return (
         <div>
-            <button className="bg-rd-400 text-white">Click Me</button>
+            <button>{name}</button>
         </div> 
     )
 }
 
-export default Button;
+export default Button1;
