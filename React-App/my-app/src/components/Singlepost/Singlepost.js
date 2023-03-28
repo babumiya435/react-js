@@ -3,7 +3,7 @@ import { Component } from "react";
 class Singlepost extends Component {
     render(){
         return (
-            <div>
+            <div className="post">
                 <div>
                    {this.props.title}
                 </div>
