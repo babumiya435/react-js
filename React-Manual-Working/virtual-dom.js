@@ -1,4 +1,4 @@
-function test() {
+function test(i) {
     const ele = `<div>
     <div>
         Hello World - Native JS Way
@@ -13,6 +13,7 @@ function test() {
 
     document.getElementById('app1').innerHTML = ele; // real - dom updation
 
+    // React try to store the previous state of the Real-DOM and update it accordingly
     const ele2 = React.createElement(
         'div',
         null,
@@ -27,4 +28,10 @@ function test() {
     ReactDOM.render(ele2,document.getElementById('app2')); // react-dom updation
 }
 
+// for (let i = 0; i < 100; i++) {
+//         setTimeout(()=>{
+//             test(i);
+//         },5000);
+// }
 setInterval(test,1000);
+
