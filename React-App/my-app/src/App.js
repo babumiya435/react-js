@@ -15,7 +15,9 @@ function App() {
       <div>
         <HelloWorld text ='Hello world text from App.js' />
       </div> */}
-      <Posts />
+      <div className='container mx-auto'>
+        <Posts />
+      </div>
     </div>
   );
 }
