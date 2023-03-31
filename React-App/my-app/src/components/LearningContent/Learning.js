@@ -6,9 +6,9 @@ class Learning extends Component {
         data: [
             {
                 id: 1,
-                title: "Class based components",
-                description: "Class based components description",
-                image: "Class based components image",
+                title: "Class based Components",
+                description: "Class based components Description",
+                image: "Class based components Image",
             }
         ]
     }
