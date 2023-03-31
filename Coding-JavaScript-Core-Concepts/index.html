@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <script defer src="./debounce.js"></script>
+    <script defer src="./localStorage.js"></script>
+    <script defer src="./throttling.js"></script>
+    <script defer src="./bubbling-capturing.js"></script>
+    <script defer src="./eventDeligation.js"></script>
+    <style>
+        div{
+            min-width: 100px;
+            min-width: 100px;
+            padding: 30px;
+            border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <div>Search : 
+        <input type="text" id="searchInput" onkeyup="betterThrottling()" value="sameer">
+    </div>
+    <div id="grandparent">
+        <div id="parent">
+            <div id="child"></div>
+        </div>
+    </div>
+    <div id="list">
+        <ul id="cards-list">
+            <li id="mobile-item">Mobile</li>
+            <li id="laptop-item">Laptop</li>
+            <li id="tv-item">TV</li>
+        </ul>
+    </div>
+    <div id="inputs">
+        <input type="text" data-uppercase>
+        <input type="text">
+        <input type="text">
+    </div>
+</body>
+</html>
