@@ -16,10 +16,18 @@ class Posts extends Component {
         postTite : "List of Posts"
     }
 
-    updateTitleHandler() {
+    updateTitleHandler(title,e) {
+        e.preventDefault();
         console.log(this);
         this.setState({
-            postTite: "Modified Post Title Way 2"
+            postTite: title // need to pass the object contect while calling the function
+        })
+    }
+    updateArrow = (title,e)=> {
+        e.preventDefault();
+        console.log(this);
+        this.setState({
+            postTite: title // using arrow function syntax to avoid this confusion
         })
     }
 
@@ -39,7 +47,7 @@ class Posts extends Component {
             //     postTite: "Modified Post Title Way 1",
             // })
             // this.setState({
-            //     postTite: "Modified Post Title Way 2",
+            //     postTite: "Modified Post Title Way 1",
             // })
         // },3000)
         
@@ -48,12 +56,33 @@ class Posts extends Component {
                 <h2 className="text-2xl my-3">
                     {this.state.postTite}
                 </h2>
+                {/* this is the best way */}
                 <div>
                     <button 
-                        onClick={this.updateTitleHandler.bind(this)}
+                        onClick={this.updateTitleHandler.bind(this,"title update 2")}
                         className="px-5 py-2 bg-red-500 rounded-3xl text-white">
-                        Update Post Title
+                        class method
                     </button>
+                    <button 
+                        onClick={this.updateArrow.bind(this,"title update 3")}
+                        className="px-5 py-2 bg-red-500 rounded-3xl text-white">
+                        arrow method
+                    </button>
+                {/* this is the best way */}
+                {/* not recommended way because it can have side effects when we pass this component to child */}
+                    {/* <a 
+                        href="https://google.com" 
+                        onClick={(e)=> this.updateArrow(e,"test 3")}
+                        className="px-5 py-2 bg-red-500 rounded-3xl text-white">
+                        anchor with property
+                    </a>
+                    <a 
+                        href="https://google.com" 
+                        onClick={(e)=> this.updateTitleHandler(e,"test 2")}
+                        className="px-5 py-2 bg-red-500 rounded-3xl text-white">
+                        anchor bind
+                    </a> */}
+                {/* not recommended way because it can have side effects when we pass this component to child */}
                 </div>
                 <hr/>
                 <div className="flex my-3">
