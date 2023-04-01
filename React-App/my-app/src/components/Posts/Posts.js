@@ -13,9 +13,11 @@ class Posts extends Component {
                 description: "Post 2 Description"
             }
         ],
-        postTite : "List of Posts"
+        postTite : "List of Posts",
+        showposts : true,
+        count : 0
     }
-
+// --------------------------------------------Handling Events-----------------------------
     updateTitleHandler(title,e) {
         e.preventDefault();
         console.log(this);
@@ -29,6 +31,18 @@ class Posts extends Component {
         this.setState({
             postTite: title // using arrow function syntax to avoid this confusion
         })
+    }
+    togglePost = ()=>{
+        this.setState({
+            showposts: !this.state.showposts
+        })
+    }
+    getPosts = () => {
+        if(!this.state.showposts) return null;
+        return (<div className="flex my-5">
+            <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
+            <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+        </div>)
     }
 
     render(){
@@ -50,9 +64,20 @@ class Posts extends Component {
             //     postTite: "Modified Post Title Way 1",
             // })
         // },3000)
-        
+        let posts = null;
+        if (this.state.showposts) {
+            posts = (
+                <div className="flex my-3">
+                    <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
+                    <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                </div>
+            )
+        }
         return (
             <div>
+                <div>
+                    {this.state.count !==0 && "Show Count"}
+                </div>
                 <h2 className="text-2xl my-3">
                     {this.state.postTite}
                 </h2>
@@ -85,10 +110,24 @@ class Posts extends Component {
                 {/* not recommended way because it can have side effects when we pass this component to child */}
                 </div>
                 <hr/>
-                <div className="flex my-3">
-                    <Singlepost title = {this.state.post[0].title} description={this.state.post[0].description}/>
-                    <Singlepost title = {this.state.post[1].title} description={this.state.post[1].description}/>
+                <div>
+                    <button onClick={this.togglePost} className="px-5 py-3 bg-red-500 text-white">
+                        {this.state.showposts ? "Hide Posts" : "Show Posts"}
+                    </button>
                 </div>
+                {/* JSX conditional rendering */}
+                {posts} 
+                {this.state.showposts ?
+                    (<div className="flex my-3">
+                        <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
+                        <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                    </div>) : null
+                }
+                {this.state.showposts && (<div className="flex my-3">
+                        <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
+                        <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                    </div>)}
+                {this.getPosts()}
             </div>
             
         )
