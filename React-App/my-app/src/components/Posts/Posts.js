@@ -94,7 +94,7 @@ class Posts extends Component {
                         arrow method
                     </button>
                 {/* this is the best way */}
-                {/* not recommended way because it can have side effects when we pass this component to child */}
+                {/* call back is not recommended way because it can have side effects when we pass this component to child */}
                     {/* <a 
                         href="https://google.com" 
                         onClick={(e)=> this.updateArrow(e,"test 3")}
@@ -111,22 +111,26 @@ class Posts extends Component {
                 </div>
                 <hr/>
                 <div>
+                    {/* ternary operator conditioning */}
                     <button onClick={this.togglePost} className="px-5 py-3 bg-red-500 text-white">
                         {this.state.showposts ? "Hide Posts" : "Show Posts"}
                     </button>
                 </div>
-                {/* JSX conditional rendering */}
+                {/* JSX conditional rendering inside render function before return*/}
                 {posts} 
+                {/* ternary operator conditioning */}
                 {this.state.showposts ?
                     (<div className="flex my-3">
                         <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
                         <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
                     </div>) : null
                 }
+                {/* AND && operator conditioning */}
                 {this.state.showposts && (<div className="flex my-3">
                         <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
                         <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
                     </div>)}
+                {/* gettign data or JSX as function return */}
                 {this.getPosts()}
             </div>
             
