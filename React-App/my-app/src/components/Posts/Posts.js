@@ -50,14 +50,23 @@ class Posts extends Component {
         // let posts = this.state.posts.map((post) => (<Singlepost key={post.id} title={post.title} description={post.description} />));
         let posts = [];
         // using for loop
-        for(let post of this.state.posts){
+        for (let post of this.state.posts) {
             posts.push(
                 <Singlepost key={post.id} title={post.title} description={post.description} />
             )
         }
+
+        // we can also use map inside JSX
         return (<div className="flex my-5">
-           {posts}
+            {
+                this.state.posts.map((post) => {
+                    return <Singlepost key={post.id} title={post.title} description={post.description} />
+                })
+            }
         </div>)
+        // return (<div className="flex my-5">
+        //     {posts}
+        // </div>)
     }
 
     render(){
