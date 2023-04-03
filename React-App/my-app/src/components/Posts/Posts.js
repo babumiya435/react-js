@@ -1,5 +1,6 @@
 import { Component } from "react";
 import AddPost from "../AddPost/AddPost";
+import Dialog from "../Dialog/Dialog";
 import Singlepost from "../Singlepost/Singlepost";
 
 class Posts extends Component {
@@ -45,6 +46,14 @@ class Posts extends Component {
             showposts: !this.state.showposts
         })
     }
+    titleChangeHander = (id, e)=>{
+        const posts = [...this.state.posts];
+        const postIndex = this.state.posts.findIndex(post => id === post.id)
+        posts[postIndex].title = e.target.value;
+        this.setState({
+            posts,
+        })
+    } 
     getPosts(){
         if(!this.state.showposts) return null;
         // using map method
@@ -53,21 +62,43 @@ class Posts extends Component {
         // using for loop
         for (let post of this.state.posts) {
             posts.push(
-                <Singlepost key={post.id} title={post.title} description={post.description} />
+                <Singlepost titleChange = {this.titleChangeHander.bind(this,post.id)} key={post.id} title={post.title} description={post.description} />
             )
         }
 
         // we can also use map inside JSX
         return (<div className="flex my-5">
             {
+                // using bind method we are creating copy of function with its this context and sending the function to the child to call with the parent context or sent contect
                 this.state.posts.map((post) => {
-                    return <Singlepost key={post.id} title={post.title} description={post.description} />
+                    // return (<Singlepost 
+                    // titleChange={this.titleChangeHander.bind(this, post.id)}  // passing call back function to child
+                    // key={post.id} 
+                    // title={post.title} 
+                    // description={post.description} />)
+                     return   (<Singlepost
+                            key={post.id} 
+                            title={post.title} 
+                            description={post.description}
+                            addPost = {<AddPost/>}
+                            >
+                                {/* passing content to child and use it as {props.children} */}
+                            <div className="my-2">
+                                <input type='text'
+                                    value={post.title}
+                                    onChange={this.titleChangeHander.bind(this, post.id)}
+                                    className="px-5 py-1 rounded-xl border border-grey-500" />
+                            </div>
+                        </Singlepost>)
                 })
             }
         </div>)
         // return (<div className="flex my-5">
         //     {posts}
         // </div>)
+    }
+    test = (data)=>{
+        console.group(this,data)
     }
 
     render(){
@@ -114,6 +145,11 @@ class Posts extends Component {
                         class method
                     </button>
                     <button 
+                        onClick={this.test.bind('test')}
+                        className="px-5 py-2 bg-red-500 rounded-3xl text-white">
+                        Test
+                    </button>
+                    <button 
                         onClick={this.updateArrow.bind(this,"title update 3")}
                         className="px-5 py-2 bg-red-500 rounded-3xl text-white">
                         arrow method
@@ -157,9 +193,19 @@ class Posts extends Component {
                     </div>)}
                 {/* gettign data or JSX as function return */}
                 {this.getPosts()}
-                <div className="my-5">
-                    <AddPost />
+                <div className="flex">
+                    <div className="my-5 flex-1 w-full">
+                        <AddPost />
+                    </div>
+                    <div className="flex-1">
+                        <Dialog>
+                            <div>
+                                Showing Dialog data from parent
+                            </div>
+                        </Dialog>
+                    </div>
                 </div>
+                
             </div>
             
         )
