@@ -4,28 +4,37 @@ import Dialog from "../Dialog/Dialog";
 import Singlepost from "../Singlepost/Singlepost";
 
 class Posts extends Component {
-    state = {
-        posts: [
-            {
-                id: 1,
-                title: "Post 1",
-                description: "Post 1 Description"
-            },
-            {
-                id: 2,
-                title: "Post 2",
-                description: "Post 2 Description"
-            },
-            {
-                id: 3,
-                title: "Post 3",
-                description: "Post 3 Description"
-            }
-        ],
-        postTite : "List of Posts",
-        showposts : true,
-        count : 0
+    constructor(props){
+        super(props);
+        this.state =  {
+            posts: [
+                {
+                    id: 1,
+                    title: "Post 1",
+                    description: "Post 1 Description"
+                },
+                {
+                    id: 2,
+                    title: "Post 2",
+                    description: "Post 2 Description"
+                },
+                {
+                    id: 3,
+                    title: "Post 3",
+                    description: "Post 3 Description"
+                }
+            ],
+            postTite : "List of Posts",
+            showposts : true,
+            count : 0
+        }
+        console.log("[Posts.js] constructor is called");
     }
+    static getDerivedStateFromProps(props,state){
+        console.log("[Posts.js] getDerivedStateFromProps  is called");
+        return state;
+    }
+    
 // --------------------------------------------Handling Events-----------------------------
     updateTitleHandler(title,e) {
         e.preventDefault();
@@ -102,6 +111,7 @@ class Posts extends Component {
     }
 
     render(){
+        console.log("[Posts.js] render is called");
         // modifying state properties ising setState() method
         // setTimeout(()=>{
             // console.log("modified");
@@ -207,8 +217,11 @@ class Posts extends Component {
                 </div>
                 
             </div>
-            
         )
+    }
+
+    componentDidMount(){
+        console.log("[Posts.js] componentDidMount is called");
     }
 }
 
