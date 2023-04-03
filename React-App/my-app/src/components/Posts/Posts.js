@@ -1,4 +1,5 @@
 import { Component } from "react";
+import AddPost from "../AddPost/AddPost";
 import Singlepost from "../Singlepost/Singlepost";
 
 class Posts extends Component {
@@ -156,6 +157,9 @@ class Posts extends Component {
                     </div>)}
                 {/* gettign data or JSX as function return */}
                 {this.getPosts()}
+                <div className="my-5">
+                    <AddPost />
+                </div>
             </div>
             
         )
