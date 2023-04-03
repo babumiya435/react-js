@@ -9,8 +9,8 @@ class AddPost extends Component {
 
     // Controlled Component
     addPostHandler = (e)=>{
+        alert('A name was submitted: ' + JSON.stringify(this.state));
         e.preventDefault();
-        console.log(this.state);
     }
     textChange = (title,e)=>{
         this.setState({
@@ -33,13 +33,13 @@ class AddPost extends Component {
                         <label className="block">
                             Title
                         </label>
-                        <input onChange={this.textChange.bind(this,"title")} type="text" value={this.state.title} className="px-3 py-1 block w-1/4 border border-grey-600 focus:outline-none focus:border-red-600"/>
+                        <input onChange={this.textChange.bind(this,"title")} type="text" value={this.state.title} className="px-3 py-1 block w-full border border-grey-600 focus:outline-none focus:border-red-600"/>
                     </div>
                     <div className="my-3">
                         <label className="block">
                             Description
                         </label>
-                       <textarea onChange={this.textChange.bind(this,"description")} value={this.state.description} className="px-3 py-1 block w-1/4 border border-grey-600 focus:outline-none focus:border-red-600">
+                       <textarea onChange={this.textChange.bind(this,"description")} value={this.state.description} className="px-3 py-1 block w-full border border-grey-600 focus:outline-none focus:border-red-600">
 
                        </textarea>
                     </div>
@@ -47,7 +47,7 @@ class AddPost extends Component {
                         <label className="block">
                             Status
                         </label>
-                        <select onChange={this.textChange.bind(this,"status")} value={this.state.status} className="px-3 py-1 block w-1/4 border border-grey-600 focus:outline-none focus:border-red-600">
+                        <select onChange={this.textChange.bind(this,"status")} value={this.state.status} className="px-3 py-1 block w-full border border-grey-600 focus:outline-none focus:border-red-600">
                             <option value='active'>
                                 Active
                             </option>
