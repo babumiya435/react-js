@@ -3,14 +3,21 @@ import Singlepost from "../Singlepost/Singlepost";
 
 class Posts extends Component {
     state = {
-        post: [
+        posts: [
             {
+                id: 1,
                 title: "Post 1",
                 description: "Post 1 Description"
             },
             {
+                id: 2,
                 title: "Post 2",
                 description: "Post 2 Description"
+            },
+            {
+                id: 3,
+                title: "Post 3",
+                description: "Post 3 Description"
             }
         ],
         postTite : "List of Posts",
@@ -37,11 +44,19 @@ class Posts extends Component {
             showposts: !this.state.showposts
         })
     }
-    getPosts = () => {
+    getPosts(){
         if(!this.state.showposts) return null;
+        // using map method
+        // let posts = this.state.posts.map((post) => (<Singlepost key={post.id} title={post.title} description={post.description} />));
+        let posts = [];
+        // using for loop
+        for(let post of this.state.posts){
+            posts.push(
+                <Singlepost key={post.id} title={post.title} description={post.description} />
+            )
+        }
         return (<div className="flex my-5">
-            <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
-            <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+           {posts}
         </div>)
     }
 
@@ -49,9 +64,9 @@ class Posts extends Component {
         // modifying state properties ising setState() method
         // setTimeout(()=>{
             // console.log("modified");
-            // this.state.post[0].title = "Modified Post 1"; 
-            // this.state.post[1].title = "Modified Post 2"; 
-            // const posts = [...this.state.post];
+            // this.state.posts[0].title = "Modified Post 1"; 
+            // this.state.posts[1].title = "Modified Post 2"; 
+            // const posts = [...this.state.posts];
             // posts[0].title = "Modified Post 1";  // wrong way of changing state data
             // posts[1].title = "Modified Post 2";
             // const postTitleM = [...this.state.postTite][0];
@@ -68,8 +83,8 @@ class Posts extends Component {
         if (this.state.showposts) {
             posts = (
                 <div className="flex my-3">
-                    <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
-                    <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                    <Singlepost title={this.state.posts[0].title} description={this.state.posts[0].description} />
+                    <Singlepost title={this.state.posts[1].title} description={this.state.posts[1].description} />
                 </div>
             )
         }
@@ -117,18 +132,18 @@ class Posts extends Component {
                     </button>
                 </div>
                 {/* JSX conditional rendering inside render function before return*/}
-                {posts} 
+                {false && posts} 
                 {/* ternary operator conditioning */}
-                {this.state.showposts ?
+                {false && this.state.showposts ?
                     (<div className="flex my-3">
-                        <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
-                        <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                        <Singlepost title={this.state.posts[0].title} description={this.state.posts[0].description} />
+                        <Singlepost title={this.state.posts[1].title} description={this.state.posts[1].description} />
                     </div>) : null
                 }
                 {/* AND && operator conditioning */}
-                {this.state.showposts && (<div className="flex my-3">
-                        <Singlepost title={this.state.post[0].title} description={this.state.post[0].description} />
-                        <Singlepost title={this.state.post[1].title} description={this.state.post[1].description} />
+                {false && this.state.showposts && (<div className="flex my-3">
+                        <Singlepost title={this.state.posts[0].title} description={this.state.posts[0].description} />
+                        <Singlepost title={this.state.posts[1].title} description={this.state.posts[1].description} />
                     </div>)}
                 {/* gettign data or JSX as function return */}
                 {this.getPosts()}
