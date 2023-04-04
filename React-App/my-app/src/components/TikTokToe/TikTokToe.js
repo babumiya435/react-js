@@ -5,14 +5,6 @@ function TikTokToe (){
     const a = Array(3).fill("").map(x => Array(3).fill(""))
     const [toe,setToe] = useState(a);
     const [status,setStatus] = useState("");
-    function tickTock(){
-        if(!toe){ setToe(handleClick);}
-        if (toe === "X") {
-            setToe("O");
-        } else if(toe === "O"){
-            setToe("X");
-        }
-    }
     function handleClick(i,j){
         const toes = [...toe];
         if(!toes[i][j]) {
