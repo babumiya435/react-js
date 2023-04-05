@@ -40,7 +40,10 @@ function TikTokToe() {
         return mainPost;
     }
     return (
-        <>
+        <>  
+            <div className="m-4 p-3 border border-black-800  bg-red-500 shadow w-fit text-white">
+                Tik Tok Toe Game:
+            </div>
             <div className="m-4 p-3 border border-grey-400 shadow w-fit">
                 {/* <div className="flex">
                 <div onClick={tickTock} className="m-4 p-3 border border-grey-400 shadow text-xl font-bold text-blue-600">{toe}</div>
