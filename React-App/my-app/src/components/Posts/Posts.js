@@ -208,14 +208,13 @@ class Posts extends Component {
                         <AddPost />
                     </div>
                     <div className="flex-1">
-                        <Dialog>
+                        <Dialog >
                             <div>
                                 Showing Dialog data from parent
                             </div>
                         </Dialog>
                     </div>
                 </div>
-                
             </div>
         )
     }
