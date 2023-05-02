@@ -1,0 +1,23 @@
+.board{
+    height: 500px;
+    width: 500px;
+    border: 1px solid red;
+    position: relative;
+}
+
+.baloon{
+  position: absolute;
+  border: 1px solid red;
+  border-radius: 50%;
+}
+
+.arrow{
+  width: 100px;
+  border: 1px solid blue;
+  display: inline-block;
+  position: absolute;
+}
+
+.active-baloon{
+  border: 2px solid green;
+}
